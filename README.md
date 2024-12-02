@@ -1,4 +1,4 @@
-<h1>🎮 "Code and Cry!" 🎮</h1>
+<h1>Quiz Game: Code and Cry!</h1>
 It's my first game project here on GH. Let's support me and donate, а то прям тяжко.
 
 **Лирическое отсутпление**
