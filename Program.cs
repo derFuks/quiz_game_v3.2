@@ -16,7 +16,26 @@ namespace QuizGame_v3._2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            while (true)
+            {
+                using (var difficultyForm = new DifficultyForm())
+                {
+                    var result = difficultyForm.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        Application.Run(new Form1(difficultyForm.SelectedWinCondition));
+                        break;
+                    }
+                    else if (result == DialogResult.Retry) {
+                        continue; // set difficulty level again
+                    } else
+                    {
+                        break;
+                    }
+                }
+            }
+
         }
     }
 }

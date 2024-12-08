@@ -41,6 +41,10 @@
             this.btnHint4 = new System.Windows.Forms.Button();
             this.btnGameStart = new System.Windows.Forms.Button();
             this.btnGameEnd = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.lblScore = new System.Windows.Forms.Label();
+            this.lblStreak = new System.Windows.Forms.Label();
+            this.BackToDifficulty = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblQuestion
@@ -163,15 +167,57 @@
             this.btnGameEnd.Name = "btnGameEnd";
             this.btnGameEnd.Size = new System.Drawing.Size(253, 23);
             this.btnGameEnd.TabIndex = 12;
-            this.btnGameEnd.Text = "Take money and leave";
+            this.btnGameEnd.Text = "End game";
             this.btnGameEnd.UseVisualStyleBackColor = true;
             this.btnGameEnd.Click += new System.EventHandler(this.btnGameEnd_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.BackColor = System.Drawing.Color.YellowGreen;
+            this.progressBar1.ForeColor = System.Drawing.Color.IndianRed;
+            this.progressBar1.Location = new System.Drawing.Point(362, 389);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(253, 23);
+            this.progressBar1.TabIndex = 13;
+            this.progressBar1.Value = 1;
+            // 
+            // lblScore
+            // 
+            this.lblScore.AutoSize = true;
+            this.lblScore.Location = new System.Drawing.Point(362, 417);
+            this.lblScore.Name = "lblScore";
+            this.lblScore.Size = new System.Drawing.Size(70, 13);
+            this.lblScore.TabIndex = 14;
+            this.lblScore.Text = "Your score: 0";
+            // 
+            // lblStreak
+            // 
+            this.lblStreak.AutoSize = true;
+            this.lblStreak.Location = new System.Drawing.Point(362, 430);
+            this.lblStreak.Name = "lblStreak";
+            this.lblStreak.Size = new System.Drawing.Size(95, 13);
+            this.lblStreak.TabIndex = 15;
+            this.lblStreak.Text = "Correct answers: 0";
+            // 
+            // BackToDifficulty
+            // 
+            this.BackToDifficulty.Location = new System.Drawing.Point(29, 447);
+            this.BackToDifficulty.Name = "BackToDifficulty";
+            this.BackToDifficulty.Size = new System.Drawing.Size(253, 23);
+            this.BackToDifficulty.TabIndex = 16;
+            this.BackToDifficulty.Text = "Change difficulty";
+            this.BackToDifficulty.UseVisualStyleBackColor = true;
+            this.BackToDifficulty.Click += new System.EventHandler(this.BackToDifficulty_Click_1);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 501);
+            this.Controls.Add(this.BackToDifficulty);
+            this.Controls.Add(this.lblStreak);
+            this.Controls.Add(this.lblScore);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnGameEnd);
             this.Controls.Add(this.btnGameStart);
             this.Controls.Add(this.lblQuestion);
@@ -207,6 +253,10 @@
         private System.Windows.Forms.Button btnHint4;
         private System.Windows.Forms.Button btnGameStart;
         private System.Windows.Forms.Button btnGameEnd;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label lblScore;
+        private System.Windows.Forms.Label lblStreak;
+        private System.Windows.Forms.Button BackToDifficulty;
     }
 }
 
