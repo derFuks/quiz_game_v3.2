@@ -20,7 +20,7 @@ namespace QuizGame_v3
         private void DifficultyForm_Load(object sender, EventArgs e)
         {
             this.Text = "Select Difficulty";
-            this.ClientSize = new System.Drawing.Size(300, 200);
+            this.ClientSize = new System.Drawing.Size(400, 300);
 
             Label lblWelcome = new Label
             {
@@ -71,7 +71,7 @@ namespace QuizGame_v3
                 Width = 150
             };
 
-            this.Controls.Add(btnBackToDifficulty);
+            // this.Controls.Add(btnBackToDifficulty);
 
         }
 

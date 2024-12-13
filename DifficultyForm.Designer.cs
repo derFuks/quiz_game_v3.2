@@ -38,9 +38,10 @@
             // lblWelcome
             // 
             this.lblWelcome.AutoSize = true;
+            this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblWelcome.Location = new System.Drawing.Point(12, 40);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(52, 13);
+            this.lblWelcome.Size = new System.Drawing.Size(75, 20);
             this.lblWelcome.TabIndex = 0;
             this.lblWelcome.Text = "Welcome";
             // 
@@ -79,6 +80,7 @@
             // 
             // btnConfirm
             // 
+            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirm.Location = new System.Drawing.Point(15, 187);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(110, 23);

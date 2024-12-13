@@ -59,6 +59,8 @@
             // 
             // btnOption1
             // 
+            this.btnOption1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnOption1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOption1.Location = new System.Drawing.Point(29, 95);
             this.btnOption1.Name = "btnOption1";
             this.btnOption1.Size = new System.Drawing.Size(586, 23);
@@ -69,6 +71,8 @@
             // 
             // btnOption2
             // 
+            this.btnOption2.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnOption2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOption2.Location = new System.Drawing.Point(29, 124);
             this.btnOption2.Name = "btnOption2";
             this.btnOption2.Size = new System.Drawing.Size(586, 23);
@@ -79,6 +83,8 @@
             // 
             // btnOption3
             // 
+            this.btnOption3.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnOption3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOption3.Location = new System.Drawing.Point(29, 153);
             this.btnOption3.Name = "btnOption3";
             this.btnOption3.Size = new System.Drawing.Size(586, 23);
@@ -89,6 +95,8 @@
             // 
             // btnOption4
             // 
+            this.btnOption4.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnOption4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOption4.Location = new System.Drawing.Point(29, 182);
             this.btnOption4.Name = "btnOption4";
             this.btnOption4.Size = new System.Drawing.Size(586, 23);
@@ -99,60 +107,80 @@
             // 
             // btnHint1
             // 
+            this.btnHint1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnHint1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHint1.Location = new System.Drawing.Point(29, 268);
             this.btnHint1.Name = "btnHint1";
             this.btnHint1.Size = new System.Drawing.Size(253, 23);
             this.btnHint1.TabIndex = 5;
             this.btnHint1.Text = "50-50";
             this.btnHint1.UseVisualStyleBackColor = true;
+            this.btnHint1.Click += new System.EventHandler(this.btnHint1_Click);
             // 
             // btnHint2
             // 
+            this.btnHint2.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnHint2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHint2.Location = new System.Drawing.Point(29, 297);
             this.btnHint2.Name = "btnHint2";
             this.btnHint2.Size = new System.Drawing.Size(253, 23);
             this.btnHint2.TabIndex = 6;
             this.btnHint2.Text = "Ask the Audience";
             this.btnHint2.UseVisualStyleBackColor = true;
+            this.btnHint2.Click += new System.EventHandler(this.btnHint2_Click);
             // 
             // btnHint3
             // 
+            this.btnHint3.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnHint3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHint3.Location = new System.Drawing.Point(29, 326);
             this.btnHint3.Name = "btnHint3";
             this.btnHint3.Size = new System.Drawing.Size(253, 23);
             this.btnHint3.TabIndex = 7;
             this.btnHint3.Text = "Call a Stupid Friend";
             this.btnHint3.UseVisualStyleBackColor = true;
+            this.btnHint3.Click += new System.EventHandler(this.btnHint3_Click);
             // 
             // btnHint6
             // 
+            this.btnHint6.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnHint6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHint6.Location = new System.Drawing.Point(362, 326);
             this.btnHint6.Name = "btnHint6";
             this.btnHint6.Size = new System.Drawing.Size(253, 23);
             this.btnHint6.TabIndex = 10;
             this.btnHint6.Text = "Ask ChatGPT";
             this.btnHint6.UseVisualStyleBackColor = true;
+            this.btnHint6.Click += new System.EventHandler(this.btnHint6_Click);
             // 
             // btnHint5
             // 
+            this.btnHint5.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnHint5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHint5.Location = new System.Drawing.Point(362, 297);
             this.btnHint5.Name = "btnHint5";
             this.btnHint5.Size = new System.Drawing.Size(253, 23);
             this.btnHint5.TabIndex = 9;
             this.btnHint5.Text = "Toss a d4 Dice";
             this.btnHint5.UseVisualStyleBackColor = true;
+            this.btnHint5.Click += new System.EventHandler(this.btnHint5_Click);
             // 
             // btnHint4
             // 
+            this.btnHint4.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnHint4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHint4.Location = new System.Drawing.Point(362, 268);
             this.btnHint4.Name = "btnHint4";
             this.btnHint4.Size = new System.Drawing.Size(253, 23);
             this.btnHint4.TabIndex = 8;
             this.btnHint4.Text = "Call Your Lawyer";
             this.btnHint4.UseVisualStyleBackColor = true;
+            this.btnHint4.Click += new System.EventHandler(this.btnHint4_Click);
             // 
             // btnGameStart
             // 
+            this.btnGameStart.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnGameStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGameStart.Location = new System.Drawing.Point(29, 389);
             this.btnGameStart.Name = "btnGameStart";
             this.btnGameStart.Size = new System.Drawing.Size(253, 23);
@@ -163,6 +191,8 @@
             // 
             // btnGameEnd
             // 
+            this.btnGameEnd.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnGameEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGameEnd.Location = new System.Drawing.Point(29, 418);
             this.btnGameEnd.Name = "btnGameEnd";
             this.btnGameEnd.Size = new System.Drawing.Size(253, 23);
@@ -201,6 +231,8 @@
             // 
             // BackToDifficulty
             // 
+            this.BackToDifficulty.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.BackToDifficulty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BackToDifficulty.Location = new System.Drawing.Point(29, 447);
             this.BackToDifficulty.Name = "BackToDifficulty";
             this.BackToDifficulty.Size = new System.Drawing.Size(253, 23);

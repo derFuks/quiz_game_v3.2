@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QuizGame_v3
 {
@@ -16,6 +17,14 @@ namespace QuizGame_v3
         private int score;
         private int correctAnswersInARow;
         private int winCondition;
+
+        private bool used5050 = false;
+        private bool usedAudience = false;
+        private bool usedFriend = false;
+        private bool usedLawyer = false;
+        private bool usedDice = false;
+        private bool usedChatGPT = false;
+
         public Form1(int winCondition)
         {
             InitializeComponent();
@@ -68,7 +77,6 @@ namespace QuizGame_v3
                 new Badge("Maniac","You are playing over 10 times. Are you ok?","images/maniac.png"), // for playing over 10 times
                 new Badge("Cheater","You can't know it all","images/cheater.png"), //for answering 10 questions without loosing
             };
-
             ShuffleQuestions(); // avoid reapetitions
             DisplayQuestion();
         }
@@ -87,14 +95,11 @@ namespace QuizGame_v3
             }
             else
             {
-                progressBar1.Value++;
-                currentQuestionIndex++;
-                correctAnswersInARow++;
+                UpdateProgress();
                 EndGame(true);
             }
 
         }
-
         private void UpdateProgress()
         {
             int remainingQuestions = winCondition - currentQuestionIndex; // fixing the progressBar1 problem
@@ -118,7 +123,7 @@ namespace QuizGame_v3
             } else
             {
                 MessageBox.Show("Wrong answer! Game over.");
-                EndGame(false);
+                EndGame();
             }
         }
 
@@ -129,6 +134,7 @@ namespace QuizGame_v3
                 currentQuestionIndex++;
             } while (answeredQuestionIndices.Contains(currentQuestionIndex) && currentQuestionIndex < questions.Count);
             DisplayQuestion();
+            ResetButtonBorders();
         }
 
         private void ShuffleQuestions()
@@ -136,6 +142,24 @@ namespace QuizGame_v3
             Random random = new Random();
             questions = questions.OrderBy(q => random.Next()).ToList();
         }
+        private void EndGame()
+        {
+            lblQuestion.Text = "Game finished. Click 'Start Game' to play again.";
+            btnOption1.Enabled = false;
+            btnOption2.Enabled = false;
+            btnOption3.Enabled = false;
+            btnOption4.Enabled = false;
+            ResetButtonBorders();
+        }
+
+
+        private void btnOption1_Click(object sender, EventArgs e) => CheckAnswer(0);
+
+        private void btnOption2_Click(object sender, EventArgs e) => CheckAnswer(1);
+
+        private void btnOption3_Click(object sender, EventArgs e) => CheckAnswer(2);
+
+        private void btnOption4_Click(object sender, EventArgs e) => CheckAnswer(3);
         private void EndGame(bool won)
         {
             if (won) 
@@ -153,16 +177,6 @@ namespace QuizGame_v3
             btnOption3.Enabled = false;
             btnOption4.Enabled = false;
         }
-
-
-        private void btnOption1_Click(object sender, EventArgs e) => CheckAnswer(0);
-
-        private void btnOption2_Click(object sender, EventArgs e) => CheckAnswer(1);
-
-        private void btnOption3_Click(object sender, EventArgs e) => CheckAnswer(2);
-
-        private void btnOption4_Click(object sender, EventArgs e) => CheckAnswer(3);
-
        private void btnGameStart_Click(object sender, EventArgs e)
         {
             answeredQuestionIndices.Clear();
@@ -178,6 +192,13 @@ namespace QuizGame_v3
             btnOption3.Enabled = true;
             btnOption4.Enabled = true;
 
+            btnHint1.Enabled = true;
+            btnHint2.Enabled = true;
+            btnHint3.Enabled = true;
+            btnHint4.Enabled = true;
+            btnHint5.Enabled = true;
+            btnHint6.Enabled = true;
+
             Console.WriteLine("New game started");
         }
         private void btnGameEnd_Click(object sender, EventArgs e)
@@ -189,23 +210,6 @@ namespace QuizGame_v3
                 EndGame(false);
             }
         }
-
-        //private void BackToDifficulty_Click_1(object sender, EventArgs e)
-        //{
-        //    MessageBox.Show("This game ended. Your scores set to 0. Select difficulty level");
-            
-        //    // Open DifficultyForm
-        //    using (var difficultyForm = new DifficultyForm())
-        //    {
-        //        if (difficultyForm.ShowDialog() == DialogResult.OK)
-        //        {
-        //            var newGameForm = new Form1(difficultyForm.SelectedWinCondition);
-        //            newGameForm.Show();
-        //            this.Close(); // ask Konstantin what can i do here.
-        //        }
-        //    }
-        //}
-
         private async void BackToDifficulty_Click_1(object sender, EventArgs e)
         {
             this.Hide(); // temprary hide to close later
@@ -224,6 +228,132 @@ namespace QuizGame_v3
                     this.Show(); // return initial Form1 if difficulty hasn't been changed
                 }
             }
+        }
+
+        private void btnHint1_Click(object sender, EventArgs e)
+        {
+            if (used5050)
+            {
+                MessageBox.Show("You've used the 50-50 hint. Try something else.");
+                return;
+            }
+            used5050 = true;
+            Random random = new Random();
+            var incorrectOptions = new List<int> { 0, 1, 2, 3 }.Where(i => i != questions[currentQuestionIndex].CorrectOptionIndex).ToList();
+
+            for (int i = 0; i <2; i++)
+            {
+                int indexToRemove = incorrectOptions[random.Next(incorrectOptions.Count)];
+                incorrectOptions.Remove(indexToRemove);
+
+                if (indexToRemove == 0) btnOption1.Text = "";
+                if (indexToRemove == 1) btnOption2.Text = "";
+                if (indexToRemove == 2) btnOption3.Text = "";
+                if (indexToRemove == 3) btnOption4.Text = "";
+            }
+            btnHint1.Enabled = false;
+        }
+
+        private void btnHint2_Click(object sender, EventArgs e)
+        {
+            if (usedAudience)
+            {
+                MessageBox.Show("You've asked the audience, use your brains and select something else.");
+                return;
+            }
+            usedAudience = true;
+            Random random = new Random();
+            int audienceChoice = random.Next(1, 100) < 90
+                ? questions[currentQuestionIndex].CorrectOptionIndex
+                : random.Next(0, 4);
+            HighlightOption(audienceChoice);
+            MessageBox.Show($"The audience advice you to select option {audienceChoice + 1}.");
+            btnHint2.Enabled = false;
+        }
+
+        private void btnHint3_Click(object sender, EventArgs e)
+        {
+            if (usedFriend)
+            {
+                MessageBox.Show("No frends are available now. Select any other remaining option");
+                return;
+            }
+
+            usedFriend = true;
+            Random random = new Random();
+            int friendChoice = random.Next(0, 100) < 50
+                ? questions[currentQuestionIndex].CorrectOptionIndex
+                : random.Next(0, 4);
+            HighlightOption(friendChoice);
+            MessageBox.Show($"Your bro suggests option {friendChoice + 1}");
+            btnHint3.Enabled = false;
+        }
+
+        private void btnHint4_Click(object sender, EventArgs e)
+        {
+            if (usedLawyer)
+            {
+                MessageBox.Show("Your lawyer is available nomore. Select any other remaining option");
+                return;
+            }
+            usedLawyer = true;
+            Random random = new Random();
+            int lawyerChoice = random.Next(0, 2) == 0
+                ? questions[currentQuestionIndex].CorrectOptionIndex
+                : random.Next(0, 4);
+            HighlightOption(lawyerChoice);
+            MessageBox.Show($"Your lawyer wishes you well and suggests option {lawyerChoice + 1}.");
+            btnHint4.Enabled = false;
+        }
+
+        private void btnHint5_Click(object sender, EventArgs e)
+        {
+            if (usedDice)
+            {
+                MessageBox.Show("You have already tossed the dice!");
+                return;
+            }
+            usedDice = true;
+            Random random = new Random();
+            int diceChoice = random.Next(0, 4);
+            HighlightOption(diceChoice);
+            MessageBox.Show($"The dice points to option {diceChoice +1}. Are your sure you trust the dice?");
+            btnHint5.Enabled = false;
+        }
+
+        private void btnHint6_Click(object sender, EventArgs e)
+        {
+            if (usedChatGPT)
+            {
+                MessageBox.Show("You have already asked ChatGPT!");
+                return;
+            }
+
+            usedChatGPT = true;
+            Random random = new Random();
+            int chatGPTChoice = random.Next(0, 100) < 75
+                ? questions[currentQuestionIndex].CorrectOptionIndex
+                : random.Next(0, 4);
+            HighlightOption(chatGPTChoice);
+            MessageBox.Show($"ChatGPT says option {chatGPTChoice +1} is the correct one.");
+            btnHint6.Enabled = false;
+            }
+
+        private void HighlightOption(int optionIndex)
+        {
+            ResetButtonBorders();
+
+            if (optionIndex == 0) btnOption1.FlatAppearance.BorderColor = Color.SkyBlue;
+            if (optionIndex == 1) btnOption2.FlatAppearance.BorderColor = Color.SkyBlue;
+            if (optionIndex == 2) btnOption3.FlatAppearance.BorderColor = Color.SkyBlue;
+            if (optionIndex == 3) btnOption4.FlatAppearance.BorderColor = Color.SkyBlue;
+        }
+        private void ResetButtonBorders()
+        {
+            btnOption1.FlatAppearance.BorderColor = Color.Gray;
+            btnOption2.FlatAppearance.BorderColor = Color.Gray;
+            btnOption3.FlatAppearance.BorderColor = Color.Gray;
+            btnOption4.FlatAppearance.BorderColor = Color.Gray;
         }
     }
 }
