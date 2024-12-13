@@ -4,6 +4,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Media;
+using WMPLib;
 
 namespace QuizGame_v3
 {
@@ -24,6 +26,8 @@ namespace QuizGame_v3
         private bool usedLawyer = false;
         private bool usedDice = false;
         private bool usedChatGPT = false;
+        private WindowsMediaPlayer musicPlayer;
+        private SoundPlayer soundPlayer;
 
         public Form1(int winCondition)
         {
@@ -39,6 +43,8 @@ namespace QuizGame_v3
             currentQuestionIndex = 0;
             score = 0;
             correctAnswersInARow = 0;
+            musicPlayer = new WindowsMediaPlayer();
+            soundPlayer = new SoundPlayer();
 
             questions = new List<Question>() {
                 new Question("Which SQL statement is used to retrieve data from a database?", new[] { "UPDATE", "INSERT", "DELETE", "SELECT" }, 3),
@@ -79,6 +85,7 @@ namespace QuizGame_v3
             };
             ShuffleQuestions(); // avoid reapetitions
             DisplayQuestion();
+            PlayBackgroundMusic("music_audreys-dance.mp3");
         }
 
         private void DisplayQuestion()
@@ -153,13 +160,29 @@ namespace QuizGame_v3
         }
 
 
-        private void btnOption1_Click(object sender, EventArgs e) => CheckAnswer(0);
+        private void btnOption1_Click(object sender, EventArgs e)
+        {
+            PlayButtonClickSound();
+            CheckAnswer(0);
+        }
 
-        private void btnOption2_Click(object sender, EventArgs e) => CheckAnswer(1);
+        private void btnOption2_Click(object sender, EventArgs e)
+        {
+            PlayButtonClickSound();
+            CheckAnswer(1);
+        }
 
-        private void btnOption3_Click(object sender, EventArgs e) => CheckAnswer(2);
+        private void btnOption3_Click(object sender, EventArgs e)
+        {
+            PlayButtonClickSound();
+            CheckAnswer(2);
+        }
 
-        private void btnOption4_Click(object sender, EventArgs e) => CheckAnswer(3);
+        private void btnOption4_Click(object sender, EventArgs e)
+        {
+            PlayButtonClickSound();
+            CheckAnswer(3);
+        }
         private void EndGame(bool won)
         {
             if (won) 
@@ -169,6 +192,8 @@ namespace QuizGame_v3
             else
             {
                 MessageBox.Show("Game over! Try again!");
+                soundPlayer.SoundLocation = "sound_looser.wav";
+                soundPlayer.Play();
             }
 
             lblQuestion.Text = "Game finished. Click 'Start Game' to play again.";
@@ -179,6 +204,7 @@ namespace QuizGame_v3
         }
        private void btnGameStart_Click(object sender, EventArgs e)
         {
+            PlayBackgroundMusic("music_audreys-dance.mp3");
             answeredQuestionIndices.Clear();
             currentQuestionIndex = 0;
             score = 0;
@@ -354,6 +380,21 @@ namespace QuizGame_v3
             btnOption2.FlatAppearance.BorderColor = Color.Gray;
             btnOption3.FlatAppearance.BorderColor = Color.Gray;
             btnOption4.FlatAppearance.BorderColor = Color.Gray;
+        }
+        private void PlayBackgroundMusic(string trackPath)
+        {
+            musicPlayer.URL = trackPath;
+            musicPlayer.settings.setMode("loop", true); // on repeat
+            musicPlayer.controls.play();
+        }
+        private void StopBackgroundMusic()
+        {
+            musicPlayer.controls.stop();
+        }
+        private void PlayButtonClickSound()
+        {
+            soundPlayer.SoundLocation = "sound_clickone.wav";
+            soundPlayer.Play();
         }
     }
 }
