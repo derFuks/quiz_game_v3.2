@@ -45,6 +45,7 @@
             this.lblScore = new System.Windows.Forms.Label();
             this.lblStreak = new System.Windows.Forms.Label();
             this.BackToDifficulty = new System.Windows.Forms.Button();
+            this.btnShowBadges = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblQuestion
@@ -241,11 +242,24 @@
             this.BackToDifficulty.UseVisualStyleBackColor = true;
             this.BackToDifficulty.Click += new System.EventHandler(this.BackToDifficulty_Click_1);
             // 
+            // btnShowBadges
+            // 
+            this.btnShowBadges.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnShowBadges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowBadges.Location = new System.Drawing.Point(362, 447);
+            this.btnShowBadges.Name = "btnShowBadges";
+            this.btnShowBadges.Size = new System.Drawing.Size(136, 23);
+            this.btnShowBadges.TabIndex = 17;
+            this.btnShowBadges.Text = "Show Badges";
+            this.btnShowBadges.UseVisualStyleBackColor = true;
+            this.btnShowBadges.Click += new System.EventHandler(this.btnShowBadges_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 501);
+            this.Controls.Add(this.btnShowBadges);
             this.Controls.Add(this.BackToDifficulty);
             this.Controls.Add(this.lblStreak);
             this.Controls.Add(this.lblScore);
@@ -289,6 +303,7 @@
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Label lblStreak;
         private System.Windows.Forms.Button BackToDifficulty;
+        private System.Windows.Forms.Button btnShowBadges;
     }
 }
 

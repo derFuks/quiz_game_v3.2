@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace QuizGame_v3
@@ -6,12 +10,6 @@ namespace QuizGame_v3
     public partial class DifficultyForm : Form
     {
         public int SelectedWinCondition { get; private set; }
-
-        // Поля для RadioButton
-        private RadioButton rBtnEasy;
-        private RadioButton rBtnHard;
-        private RadioButton rBtnHell;
-
         public DifficultyForm()
         {
             this.Load += DifficultyForm_Load;
@@ -24,7 +22,7 @@ namespace QuizGame_v3
 
             Label lblWelcome = new Label
             {
-                Text = "Welcome to the Quiz Game! Select your difficulty level:",
+                Text = "Welcome to the Quiz Game! \nSelect your difficulty level:",
                 AutoSize = true,
                 Location = new System.Drawing.Point(10, 10)
             };
@@ -104,6 +102,5 @@ namespace QuizGame_v3
             DialogResult = DialogResult.Retry;
             this.Close();
         }
-
     }
 }

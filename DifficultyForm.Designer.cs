@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.lblWelcome = new System.Windows.Forms.Label();
-            this.rBtnEasy = new System.Windows.Forms.RadioButton();
+            this.btnShowBadges = new System.Windows.Forms.Button();
             this.rBtnHard = new System.Windows.Forms.RadioButton();
             this.rBtnHell = new System.Windows.Forms.RadioButton();
             this.btnConfirm = new System.Windows.Forms.Button();
+            this.rBtnEasy = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // lblWelcome
@@ -44,17 +45,6 @@
             this.lblWelcome.Size = new System.Drawing.Size(75, 20);
             this.lblWelcome.TabIndex = 0;
             this.lblWelcome.Text = "Welcome";
-            // 
-            // rBtnEasy
-            // 
-            this.rBtnEasy.AutoSize = true;
-            this.rBtnEasy.Location = new System.Drawing.Point(15, 101);
-            this.rBtnEasy.Name = "rBtnEasy";
-            this.rBtnEasy.Size = new System.Drawing.Size(48, 17);
-            this.rBtnEasy.TabIndex = 1;
-            this.rBtnEasy.TabStop = true;
-            this.rBtnEasy.Text = "Easy";
-            this.rBtnEasy.UseVisualStyleBackColor = true;
             // 
             // rBtnHard
             // 
@@ -89,11 +79,23 @@
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
+            // rBtnEasy
+            // 
+            this.rBtnEasy.AutoSize = true;
+            this.rBtnEasy.Location = new System.Drawing.Point(15, 101);
+            this.rBtnEasy.Name = "rBtnEasy";
+            this.rBtnEasy.Size = new System.Drawing.Size(48, 17);
+            this.rBtnEasy.TabIndex = 1;
+            this.rBtnEasy.TabStop = true;
+            this.rBtnEasy.Text = "Easy";
+            this.rBtnEasy.UseVisualStyleBackColor = true;
+            // 
             // DifficultyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(287, 450);
+            this.Controls.Add(this.btnShowBadges);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.rBtnHell);
             this.Controls.Add(this.rBtnHard);
@@ -109,6 +111,10 @@
         #endregion
 
         private System.Windows.Forms.Label lblWelcome;
+        private System.Windows.Forms.Button btnShowBadges;
+        private System.Windows.Forms.RadioButton rBtnHard;
+        private System.Windows.Forms.RadioButton rBtnHell;
         private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.RadioButton rBtnEasy;
     }
 }

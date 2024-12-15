@@ -86,6 +86,7 @@ namespace QuizGame_v3
             ShuffleQuestions(); // avoid reapetitions
             DisplayQuestion();
             PlayBackgroundMusic("music_audreys-dance.mp3");
+            AwardBadge("Beginner");
         }
 
         private void DisplayQuestion()
@@ -103,7 +104,6 @@ namespace QuizGame_v3
             else
             {
                 UpdateProgress();
-                AwardBadge("Beginner");
                 EndGame(true);
             }
 
@@ -130,8 +130,18 @@ namespace QuizGame_v3
                 MoveToNextQuestion();
             } else
             {
+                soundPlayer.SoundLocation = "sound_looser.wav";
+                soundPlayer.Play();
+
                 MessageBox.Show("Wrong answer! Game over.");
                 EndGame();
+
+                // count lost games to awword Looser badge
+                // todo: check after UpgradePlayerStats method implementation
+                if (playerStats.TotalGamesLost >= 2)
+                {
+                    AwardBadge("Looser");
+                }
             }
         }
 
@@ -193,8 +203,6 @@ namespace QuizGame_v3
             else
             {
                 MessageBox.Show("Game over! Try again!");
-                soundPlayer.SoundLocation = "sound_looser.wav";
-                soundPlayer.Play();
             }
 
             lblQuestion.Text = "Game finished. Click 'Start Game' to play again.";
@@ -405,6 +413,20 @@ namespace QuizGame_v3
                 badge.IsEarned = true;
                 MessageBox.Show($"You have earned the {badge.Title} badge!");
             }
+        }
+        private void ShowBadges()
+        {
+            var badgeForm = new BadgeForm();
+            foreach( var badge in badges.Where(b => b.IsEarned))
+            {
+                badgeForm.AddBadge(badge.ImagePath, badge.Title, badge.Description);
+            }
+            badgeForm.ShowDialog();
+        }
+
+        private void btnShowBadges_Click(object sender, EventArgs e)
+        {
+            ShowBadges();
         }
     }
 }

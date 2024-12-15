@@ -101,12 +101,24 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="files\beginner.png" />
-    <Content Include="files\cheater.png" />
-    <Content Include="files\cyborg.png" />
-    <Content Include="files\explorer.png" />
-    <Content Include="files\looser.png" />
-    <Content Include="files\maniac.png" />
+    <Content Include="files\beginner.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="files\cheater.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="files\cyborg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="files\explorer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="files\looser.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="files\maniac.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="music_audreys-dance.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

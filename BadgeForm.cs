@@ -26,9 +26,10 @@ namespace QuizGame_v3
             {
                 Text = $"{title}\n{description}",
                 AutoSize = true,
-                TextAlign = ContentAlignment.MiddleCenter,
+                TextAlign = ContentAlignment.MiddleLeft,
                 Font = new Font("Arial", 10),
                 Margin = new Padding(10)
+
             };
 
             FlowLayoutPanel badgePanel = new FlowLayoutPanel
