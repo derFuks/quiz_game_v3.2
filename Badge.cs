@@ -13,7 +13,7 @@ namespace QuizGame_v3
         public bool IsEarned { get; set; }
         public string ImagePath { get; set; }
 
-        public Badge(string title, string description, string imagePath)
+        public Badge(string imagePath, string title, string description)
         {
             Title = title;
             Description = description;

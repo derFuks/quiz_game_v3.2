@@ -76,12 +76,12 @@ namespace QuizGame_v3
 
             badges = new List<Badge>
             {
-                new Badge("Beginner", "Nice to meet you!", "images/beginner.png"), // for starting a game
-                new Badge("Looser","Failed for the first time","images/looser.png"), // for loosing for the 5th time
-                new Badge("Explorer","Nothing will stop you. Keep going!","images/explorer.png"), // for playing for the 3 time
-                new Badge("Cyborg","What are you?!","images/cyborg.png"), //for starting a game after 3 failures
-                new Badge("Maniac","You are playing over 10 times. Are you ok?","images/maniac.png"), // for playing over 10 times
-                new Badge("Cheater","You can't know it all","images/cheater.png"), //for answering 10 questions without loosing
+                new Badge("files/beginner.png", "Beginner", "Nice to meet you!"),
+                new Badge("files/looser.png", "Looser", "Failed for the first time."),
+                new Badge("files/explorer.png", "Explorer", "Nothing seems to stop you. You startet the game for the 3rd time. Keep going!"),
+                new Badge("files/cyborg.png", "Cyborg", "What are you?!"),
+                new Badge("files/maniac.png", "Maniac", "You are playing for over 10 times. Are you ok?"),
+                new Badge("files/cheater.png", "Cheater", "You can't know it all!"),
             };
             ShuffleQuestions(); // avoid reapetitions
             DisplayQuestion();
@@ -103,6 +103,7 @@ namespace QuizGame_v3
             else
             {
                 UpdateProgress();
+                AwardBadge("Beginner");
                 EndGame(true);
             }
 
@@ -395,6 +396,15 @@ namespace QuizGame_v3
         {
             soundPlayer.SoundLocation = "sound_clickone.wav";
             soundPlayer.Play();
+        }
+        private void AwardBadge(string title)
+        {
+            var badge = badges.FirstOrDefault(x => x.Title == title);
+            if (badge != null && !badge.IsEarned)
+            {
+                badge.IsEarned = true;
+                MessageBox.Show($"You have earned the {badge.Title} badge!");
+            }
         }
     }
 }

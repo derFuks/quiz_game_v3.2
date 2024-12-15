@@ -69,6 +69,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs" />
+    <EmbeddedResource Include="BadgeForm.resx">
+      <DependentUpon>BadgeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DifficultyForm.resx">
       <DependentUpon>DifficultyForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,6 +101,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="files\beginner.png" />
+    <Content Include="files\cheater.png" />
+    <Content Include="files\cyborg.png" />
+    <Content Include="files\explorer.png" />
+    <Content Include="files\looser.png" />
+    <Content Include="files\maniac.png" />
     <Content Include="music_audreys-dance.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
